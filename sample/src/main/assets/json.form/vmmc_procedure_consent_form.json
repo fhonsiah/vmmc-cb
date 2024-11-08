@@ -1,0 +1,266 @@
+{
+  "validate_on_submit": true,
+  "count": "1",
+  "encounter_type": "VMMC Consent form",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "Consent Form",
+    "fields": [
+      {
+        "key": "client_consent_for_mc_procedure",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "client_consent_for_mc_procedure",
+        "label": "Did the client consent for the Male Circumcision procedure ?",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select at least one"
+        }
+      },
+      {
+        "key": "provide_consent_form_signature",
+        "type": "toaster_notes",
+        "text": "Provide paper consent form for signature",
+        "openmrs_entity_id": "provide_consent_form_signature",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_consent_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "consent_from_equal_or_above_18",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "consent_from_equal_or_above_18",
+        "label": "Consent from ?",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "from_client",
+            "text": "Client",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "from_client"
+          },
+          {
+            "key": "from_parent",
+            "text": "Parent",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "from_parent"
+          },
+          {
+            "key": "from_guardian",
+            "text": "Guardian",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "from_guardian"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select at least one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_consent_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "consent_from_under_18",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "consent_from_under_18",
+        "label": "Consent from ?",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "from_parent",
+            "text": "Parent",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "from_parent"
+          },
+          {
+            "key": "from_guardian",
+            "text": "Guardian",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "from_guardian"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select at least one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_consent_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "consent_from",
+        "type": "hidden",
+        "openmrs_entity_id": "consent_from",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_procedure_consent_form_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "health_care_provider_first_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "health_care_provider_first_name",
+        "type": "edit_text",
+        "hint": "Health Care Provider's first name",
+        "v_required": {
+          "value": "true",
+          "err": "Please write the name"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_consent_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "health_care_provider_middle_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "health_care_provider_middle_name",
+        "type": "edit_text",
+        "hint": "Health Care Provider's middle name",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_consent_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "health_care_provider_last_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "health_care_provider_last_name",
+        "type": "edit_text",
+        "hint": "Health Care Provider's last name",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_consent_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "health_care_provider",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "health_care_provider",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_procedure_consent_form_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "actual_age",
+        "type": "hidden",
+        "openmrs_entity_id": "actual_age",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": ""
+      }
+    ]
+  }
+}

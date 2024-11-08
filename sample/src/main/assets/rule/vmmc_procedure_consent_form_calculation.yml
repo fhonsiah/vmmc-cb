@@ -1,0 +1,14 @@
+---
+name: step1_consent_from
+description: consent_from
+priority: 1
+condition: "true"
+actions:
+  - "calculation = step1_actual_age < 18 ? step1_consent_from_under_18 : step1_consent_from_equal_or_above_18"
+---
+name: step1_health_care_provider
+description: health_care_provider
+priority: 1
+condition: "true"
+actions:
+  - "calculation = step1_health_care_provider_first_name +' '+step1_health_care_provider_middle_name +' '+ step1_health_care_provider_last_name"

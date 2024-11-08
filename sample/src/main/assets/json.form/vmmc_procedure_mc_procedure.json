@@ -1,0 +1,1653 @@
+{
+  "validate_on_submit": true,
+  "count": "1",
+  "encounter_type": "VMMC MC procedure",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "Male circumcision procedure",
+    "fields": [
+      {
+        "key": "mc_procedure_date",
+        "type": "edit_text",
+        "hidden": "true",
+        "openmrs_entity_id": "mc_procedure_date",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "is_male_procedure_circumcision_conducted",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "is_male_procedure_circumcision_conducted",
+        "label": "Male circumcision procedure conducted ?",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select at least one"
+        }
+      },
+      {
+        "key": "reason",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason",
+        "type": "edit_text",
+        "hint": "Reason",
+        "v_required": {
+          "value": "true",
+          "err": "Please fill the reason"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "start_time",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "start_time",
+        "type": "time_picker",
+        "hint": "Start time",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "end_time",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "end_time",
+        "type": "time_picker",
+        "hint": "End time",
+        "constraints": [
+          {
+            "type": "time",
+            "ex": "greaterThan(., step1:start_time)",
+            "err": "End time cannot be less than the start time"
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "male_circumcision_method",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "male_circumcision_method",
+        "label": "Male circumcision method used",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "dorsal_slit",
+            "text": "Dorsal slit",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "dorsal_slit"
+          },
+          {
+            "key": "sleeve_resection",
+            "text": "Sleeve resection",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "sleeve_resection"
+          },
+          {
+            "key": "device",
+            "text": "Device",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "device"
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "device_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "device_name",
+        "type": "edit_text",
+        "hint": "Device name",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "lot_number",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "lot_number",
+        "type": "edit_text",
+        "hint": "LOT number",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "select_size_place",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "select_size_place",
+        "label": "Select size place",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "a4_40mm",
+            "text": "A4-40mm",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "a4_40mm"
+          },
+          {
+            "key": "a3_39mm",
+            "text": "A3-39mm",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "a3_39mm"
+          },
+          {
+            "key": "a2_38mm",
+            "text": "A2-38mm",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "a2_38mm"
+          },
+          {
+            "key": "a1_37mm",
+            "text": "A1-37mm",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "a1_37mm"
+          },
+          {
+            "key": "a_36mm",
+            "text": "A-36mm",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "a_36mm"
+          },
+          {
+            "key": "b_35mm",
+            "text": "B-35mm",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "b_35mm"
+          },
+          {
+            "key": "c_34mm",
+            "text": "C-34mm",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "c_34mm"
+          },
+          {
+            "key": "d_33mm",
+            "text": "D-33mm",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "d_33mm"
+          },
+          {
+            "key": "e_32mm",
+            "text": "E-32mm",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "e_32mm"
+          },
+          {
+            "key": "f_31mm",
+            "text": "F-31mm",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "f_31mm"
+          },
+          {
+            "key": "g_30mm",
+            "text": "G-30mm",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "g_30mm"
+          },
+          {
+            "key": "h_29mm",
+            "text": "H-29mm",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "h_29mm"
+          },
+          {
+            "key": "i_28mm",
+            "text": "I-28mm",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "i_28mm"
+          },
+          {
+            "key": "k_26mm",
+            "text": "K-26mm",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "k_26mm"
+          },
+          {
+            "key": "m_24mm",
+            "text": "M-24mm",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "m_24mm"
+          },
+          {
+            "key": "o_22mm",
+            "text": "O-22mm",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "o_22mm"
+          },
+          {
+            "key": "q_20mm",
+            "text": "Q-20mm",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "q_20mm"
+          },
+          {
+            "key": "s_18mm",
+            "text": "S-18mm",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "s_18mm"
+          },
+          {
+            "key": "u_16mm",
+            "text": "U-16mm",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "u_16mm"
+          },
+          {
+            "key": "v_15mm",
+            "text": "V-15mm",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "v_15mm"
+          },
+          {
+            "key": "w_14mm",
+            "text": "W-14mm",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "w_14mm"
+          },
+          {
+            "key": "x_13mm",
+            "text": "X-13mm",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "x_13mm"
+          },
+          {
+            "key": "y_12mm",
+            "text": "Y-12mm",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "y_12mm"
+          },
+          {
+            "key": "z_11mm",
+            "text": "Z-11mm",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "z_11mm"
+          },
+          {
+            "key": "z1_10mm",
+            "text": "Z1-10mm",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "z1_10mm"
+          },
+          {
+            "key": "z2_09mm",
+            "text": "Z2-09mm",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "z2_09mm"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select at least one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "aneathesia_administered_conventional",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "aneathesia_administered_conventional",
+        "label": "Aneathesia administered",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "injectables",
+            "text": "Injectables",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "injectables"
+          },
+          {
+            "key": "others",
+            "text": "Others",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "others"
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "aneathesia_administered_device",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "aneathesia_administered_device",
+        "label": "Aneathesia administered",
+        "type": "check_box",
+        "text_color": "#000000",
+        "combine_checkbox_option_values": "true",
+        "options": [
+          {
+            "key": "injectables",
+            "text": "Injectables",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "injectables"
+          },
+          {
+            "key": "topical_cream",
+            "text": "Topical Cream",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "topical_cream"
+          },
+          {
+            "key": "others",
+            "text": "Others",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "others"
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "aneathesia_administered",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "aneathesia_administered",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "other_aneathesia_administered",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_aneathesia_administered",
+        "type": "edit_text",
+        "hint": "Other",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "lignocaine_dosage_ml",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "lignocaine_dosage_ml",
+        "entity_id": "",
+        "type": "edit_text",
+        "hint": "Lignocaine dosage (ml)",
+        "edit_type": "number",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter a valid value"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "lignocaine_dosage_percent",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "lignocaine_dosage_percent",
+        "entity_id": "",
+        "type": "edit_text",
+        "hint": "Lignocaine dosage (percent)",
+        "edit_type": "number",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter a valid value"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "bupivacaine_dosage_ml",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "bupivacaine_dosage_ml",
+        "entity_id": "",
+        "type": "edit_text",
+        "hint": "Bupivacaine dosage (ml)",
+        "edit_type": "number",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter a valid value"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "bupivacaine_dosage_percent",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "bupivacaine_dosage_percent",
+        "entity_id": "",
+        "type": "edit_text",
+        "hint": "Bupivacaine dosage (percent)",
+        "edit_type": "number",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter a valid value"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "dosage_g",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "dosage_g",
+        "entity_id": "",
+        "type": "edit_text",
+        "hint": "Dosage (g)",
+        "edit_type": "number",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter a valid value"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "dosage_percent",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "dosage_percent",
+        "entity_id": "",
+        "type": "edit_text",
+        "hint": "Dosage (percent)",
+        "edit_type": "number",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter a valid value"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "start_time_topical_cream_application",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "start_time_topical_cream_application",
+        "type": "time_picker",
+        "hint": "Start time of topical cream application",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "end_time_topical_cream_application",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "end_time_topical_cream_application",
+        "type": "time_picker",
+        "hint": "End time of topical cream application",
+        "constraints": [
+          {
+            "type": "time",
+            "ex": "greaterThan(., step1:start_time_topical_cream_application)",
+            "err": "End time cannot be less than the start time"
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "surgeon_first_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "surgeon_first_name",
+        "type": "edit_text",
+        "hint": "Surgeon's first name",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "surgeon_middle_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "surgeon_middle_name",
+        "type": "edit_text",
+        "hint": "Surgeon's middle name",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "surgeon_last_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "surgeon_last_name",
+        "type": "edit_text",
+        "hint": "Surgeon's last name",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "surgeon_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "surgeon_name",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "surgeons_cadre",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "surgeons_cadre",
+        "type": "native_radio",
+        "label": "Surgeons cadre",
+        "options": [
+          {
+            "key": "surgeon_medical_officer",
+            "text": "Medical officer",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "surgeon_medical_officer",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "surgeon_assistant_medical_officer",
+            "text": "Assistant medical officer",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "surgeon_assistant_medical_officer",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "surgeon_clinical_officer_or_assistant",
+            "text": "Clinical officer/Assistant clinical officer",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "surgeon_clinical_officer_or_assistant",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "surgeon_enrolled_nurse",
+            "text": "Enrolled nurse",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "surgeon_enrolled_nurse",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "assistant_nursing_officer",
+            "text": "Assistant nursing officer",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "assistant_nursing_officer",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "nursing_officer",
+            "text": "Nursing officer",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "nursing_officer",
+            "openmrs_entity_parent": ""
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "assistant_first_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "assistant_first_name",
+        "type": "edit_text",
+        "hint": "Assistant's first name",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "assistant_middle_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "assistant_middle_name",
+        "type": "edit_text",
+        "hint": "Assistant's middle name",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "assistant_last_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "assistant_last_name",
+        "type": "edit_text",
+        "hint": "Assistant's last name",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "assistant_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "assistant_name",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "assistant_cadre",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "assistant_cadre",
+        "type": "native_radio",
+        "label": "Assistant's cadre",
+        "options": [
+          {
+            "key": "medical_officer",
+            "text": "Medical officer",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "medical_officer",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "assistant_medical_officer",
+            "text": "Assistant medical officer",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "assistant_medical_officer",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "clinical_officer_or_assistant_clinical",
+            "text": "Clinical officer/Assistant clinical officer",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "clinical_officer_or_assistant_clinical",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "enrolled_nurse",
+            "text": "Enrolled nurse",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "enrolled_nurse",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "assistant_nursing_officer",
+            "text": "Assistant nursing officer",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "assistant_nursing_officer",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "nursing_officer",
+            "text": "Nursing officer",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "nursing_officer",
+            "openmrs_entity_parent": ""
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "notes",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "notes",
+        "type": "edit_text",
+        "hint": "Notes",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "intraoperative_adverse_event_occured",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "intraoperative_adverse_event_occured",
+        "label": "Did intraoperative adverse event occur ?",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "type_of_adverse_event_with_device",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "type_of_adverse_event_with_device",
+        "type": "check_box",
+        "label": "Type of adverse event",
+        "combine_checkbox_option_values": "true",
+        "options": [
+          {
+            "key": "excessive_skin_removed",
+            "text": "Excessive skin removed",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "excessive_skin_removed"
+          },
+          {
+            "key": "excessive_bleeding",
+            "text": "Excessive bleeding",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "excessive_bleeding",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "damage_to_penis",
+            "text": "Injury to the penis",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "damage_to_penis"
+          },
+          {
+            "key": "anesthetic_related_events",
+            "text": "Anesthetic related events",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "anesthetic_related_events",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "device_displacement",
+            "text": "Device displacement",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "device_displacement",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "others",
+            "text": "Others (Specify)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "others",
+            "openmrs_entity_parent": ""
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "type_of_adverse_event_without_device",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "type_of_adverse_event_without_device",
+        "type": "check_box",
+        "label": "Type of adverse event",
+        "combine_checkbox_option_values": "true",
+        "options": [
+          {
+            "key": "excessive_skin_removed",
+            "text": "Excessive skin removed",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "excessive_skin_removed",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "excessive_bleeding",
+            "text": "Excessive bleeding",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "excessive_bleeding",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "damage_to_penis",
+            "text": "Injury to the penis",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "damage_to_penis",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "anesthetic_related_events",
+            "text": "Anesthetic related events",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "anesthetic_related_events",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "others",
+            "text": "Others (Specify)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "others",
+            "openmrs_entity_parent": ""
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "type_of_adverse_event",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "type_of_adverse_event",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "type_of_adverse_event_others",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "type_of_adverse_event_others",
+        "type": "edit_text",
+        "hint": "Others (Specify)",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "desc_intraoperative_ae_bleed_excessive_bleeding",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "desc_intraoperative_ae_bleed_excessive_bleeding",
+        "label": "Description of intraoperative adverse events (Excessive bleeding)",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "more_bleed_than_usual_but_easily_controlled",
+            "text": "More Bleeding than usual but easily controlled",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "more_bleed_than_usual_but_easily_controlled"
+          },
+          {
+            "key": "bleed_require_pressure_dressing",
+            "text": "Bleed Requires pressure dressing to control",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "bleed_require_pressure_dressing"
+          },
+          {
+            "key": "blood_transfussion_or_transfered_another_facility",
+            "text": "Blood transfussion/transffered to another facility required",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "blood_transfussion_or_transfered_another_facility"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select at least one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_mild_breed",
+        "type": "toaster_notes",
+        "text": "AE classified as MILD",
+        "openmrs_entity_id": "ae_classified_as_mild",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "info",
+        "relevance": {
+          "step1:desc_intraoperative_ae_bleed_excessive_bleeding": {
+            "type": "string",
+            "ex": "equalTo(., \"more_bleed_than_usual_but_easily_controlled\")"
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_moderate_breed",
+        "type": "toaster_notes",
+        "text": "AE classified as MODERATE",
+        "openmrs_entity_id": "ae_classified_as_moderate",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:desc_intraoperative_ae_bleed_excessive_bleeding": {
+            "type": "string",
+            "ex": "equalTo(., \"bleed_require_pressure_dressing\")"
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_severe_breed",
+        "type": "toaster_notes",
+        "text": "AE classified as SEVERE",
+        "openmrs_entity_id": "ae_classified_as_severe",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:desc_intraoperative_ae_bleed_excessive_bleeding": {
+            "type": "string",
+            "ex": "equalTo(., \"blood_transfussion_or_transfered_another_facility\")"
+          }
+        }
+      },
+      {
+        "key": "desc_intraoperative_ae_skin_removal",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "desc_intraoperative_ae_skin_removal",
+        "label": "Description of intraoperative adverse events (Excessive skin removal)",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "adds_time_or_material_needs_to_the_procedure",
+            "text": "Adds time or material needs to the procedure, but does not result in any discernible adverse condition",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "adds_time_or_material_needs_to_the_procedure"
+          },
+          {
+            "key": "skin_tight",
+            "text": "Skin is tight, but additional operative work not necessary",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "skin_tight"
+          },
+          {
+            "key": "requires_reoperation",
+            "text": "Requires re-operation or transfer to another facility to correct the problem",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "requires_reoperation"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select at least one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_mild_excessive_skin_removal",
+        "type": "toaster_notes",
+        "text": "AE classified as MILD",
+        "openmrs_entity_id": "ae_classified_as_mild",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "info",
+        "relevance": {
+          "step1:desc_intraoperative_ae_skin_removal": {
+            "type": "string",
+            "ex": "equalTo(., \"adds_time_or_material_needs_to_the_procedure\")"
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_moderate_excessive_skin_removal",
+        "type": "toaster_notes",
+        "text": "AE classified as MODERATE",
+        "openmrs_entity_id": "ae_classified_as_moderate",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:desc_intraoperative_ae_skin_removal": {
+            "type": "string",
+            "ex": "equalTo(., \"skin_tight\")"
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_severe_excessive_skin_removal",
+        "type": "toaster_notes",
+        "text": "AE classified as SEVERE",
+        "openmrs_entity_id": "ae_classified_as_severe",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:desc_intraoperative_ae_skin_removal": {
+            "type": "string",
+            "ex": "equalTo(., \"requires_reoperation\")"
+          }
+        }
+      },
+      {
+        "key": "desc_intraoperative_ae_injury_to_penis",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "desc_intraoperative_ae_injury_to_penis",
+        "label": "Description of intraoperative adverse events (Injury to penis)",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "mild_bruising",
+            "text": "Mild bruising or abrasion, not requiring treatment",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "mild_bruising"
+          },
+          {
+            "key": "bruising_or_abrasion_of_the_glans_or_shaft_of_the_penis",
+            "text": "Bruising or abrasion of the glans or shaft of the penis requiring pressure dressing or additional surgery to control",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "bruising_or_abrasion_of_the_glans_or_shaft_of_the_penis"
+          },
+          {
+            "key": "glans_or_shaft_of_penis_severed",
+            "text": "Part or all of the glans or shaft of the penis severed",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "glans_or_shaft_of_penis_severed"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select at least one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_mild_injury_to_penis",
+        "type": "toaster_notes",
+        "text": "AE classified as MILD",
+        "openmrs_entity_id": "ae_classified_as_mild_injury_to_penis",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "info",
+        "relevance": {
+          "step1:desc_intraoperative_ae_injury_to_penis": {
+            "type": "string",
+            "ex": "equalTo(., \"mild_bruising\")"
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_moderate_injury_to_penis",
+        "type": "toaster_notes",
+        "text": "AE classified as MODERATE",
+        "openmrs_entity_id": "ae_classified_as_moderate_injury_to_penis",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:desc_intraoperative_ae_injury_to_penis": {
+            "type": "string",
+            "ex": "equalTo(., \"bruising_or_abrasion_of_the_glans_or_shaft_of_the_penis\")"
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_severe_injury_to_penis",
+        "type": "toaster_notes",
+        "text": "AE classified as SEVERE",
+        "openmrs_entity_id": "ae_classified_as_severe_injury_to_penis",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:desc_intraoperative_ae_injury_to_penis": {
+            "type": "string",
+            "ex": "equalTo(., \"glans_or_shaft_of_penis_severed\")"
+          }
+        }
+      },
+      {
+        "key": "desc_intraoperative_ae_anaesthetic_related_event",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "desc_intraoperative_ae_anaesthetic_related_event",
+        "label": "Description of intraoperative adverse events (Anaesthetic-related event)",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "palpitations",
+            "text": "Palpitations, vaso-vagal reaction or emesis",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "palpitations"
+          },
+          {
+            "key": "reaction_to_anaesthetic",
+            "text": "Reaction to anaesthetic requiring medical treatment in clinic, but not transfer to another facility",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "reaction_to_anaesthetic"
+          },
+          {
+            "key": "anaphylaxis",
+            "text": "Anaphylaxis or other reaction requiring transfer to another facility",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "anaphylaxis"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select at least one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_mild_anaesthetic_related_event",
+        "type": "toaster_notes",
+        "text": "AE classified as MILD",
+        "openmrs_entity_id": "ae_classified_as_mild",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "info",
+        "relevance": {
+          "step1:desc_intraoperative_ae_anaesthetic_related_event": {
+            "type": "string",
+            "ex": "equalTo(., \"palpitations\")"
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_moderate_anaesthetic_related_event",
+        "type": "toaster_notes",
+        "text": "AE classified as MODERATE",
+        "openmrs_entity_id": "ae_classified_as_moderate",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:desc_intraoperative_ae_anaesthetic_related_event": {
+            "type": "string",
+            "ex": "equalTo(., \"reaction_to_anaesthetic\")"
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_severe_anaesthetic_related_event",
+        "type": "toaster_notes",
+        "text": "AE classified as SEVERE",
+        "openmrs_entity_id": "ae_classified_as_severe",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:desc_intraoperative_ae_anaesthetic_related_event": {
+            "type": "string",
+            "ex": "equalTo(., \"anaphylaxis\")"
+          }
+        }
+      },
+      {
+        "key": "desc_of_adverse_event_device_displacement",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "desc_of_adverse_event_device_displacement",
+        "label": "Description of adverse events(device displacement)",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "no_other_treatment_needed_beyond_routine_post_removal_wound_care",
+            "text": "Displacement of the device after which no other treatment needed beyond routine post-removal wound care. ",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no_other_treatment_needed_beyond_routine_post_removal_wound_care"
+          },
+          {
+            "key": "requires_any_treatment_more_than_routine_post_operative_wound_care",
+            "text": "Displacement of the device that requires any treatment more than routine post-operative wound care but does not meet severe criteria. ",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "requires_any_treatment_more_than_routine_post_operative_wound_care"
+          },
+
+          {
+            "key": "intentional_movement_of_device_by_client_or_self_removal_that_requires_surgical_intervention_hospitalization_transfer",
+            "text": "Displacement of the device, including intentional movement of device by the client and/or self-removal, that requires surgical intervention, hospitalization, or transfer to another facility to clinically manage.",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "intentional_movement_of_device_by_client_or_self_removal_that_requires_surgical_intervention_hospitalization_transfer"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select atleast one scale"
+        },
+        "relevance": {
+          "step1:type_of_adverse_event_with_device": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "device_displacement"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_mild_device_displacement",
+        "type": "toaster_notes",
+        "text": "AE classified as MILD",
+        "openmrs_entity_id": "ae_classified_as_mild",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "info",
+        "relevance": {
+          "step1:desc_of_adverse_event_device_displacement": {
+            "type": "string",
+            "ex": "equalTo(., \"no_other_treatment_needed_beyond_routine_post_removal_wound_care\")"
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_moderate_device_displacement",
+        "type": "toaster_notes",
+        "text": "AE classified as MODERATE",
+        "openmrs_entity_id": "ae_classified_as_moderate",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:desc_of_adverse_event_device_displacement": {
+            "type": "string",
+            "ex": "equalTo(., \"requires_any_treatment_more_than_routine_post_operative_wound_care\")"
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_severe_device_displacement",
+        "type": "toaster_notes",
+        "text": "AE classified as SEVERE",
+        "openmrs_entity_id": "ae_classified_as_severe",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:desc_of_adverse_event_device_displacement": {
+            "type": "string",
+            "ex": "equalTo(., \"intentional_movement_of_device_by_client_or_self_removal_that_requires_surgical_intervention_hospitalization_transfer\")"
+          }
+        }
+      },
+      {
+        "key": "nature_of_ae",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "nature_of_ae",
+        "type": "edit_text",
+        "hint": "What was the nature of AE",
+        "relevance": {
+          "step1:intraoperative_adverse_event_occured": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "what_done",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "what_done",
+        "type": "edit_text",
+        "hint": "What was done",
+        "relevance": {
+          "step1:intraoperative_adverse_event_occured": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "treatment_outcome",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "treatment_outcome",
+        "label": "Treatment outcome",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "adverse_event_completely_resolved",
+            "text": "Adverse event completely resolved",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "adverse_event_completely_resolved"
+          },
+          {
+            "key": "adverse_event_partially_resolved",
+            "text": "Adverse event partially resolved",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "adverse_event_partially_resolved"
+          },
+          {
+            "key": "adverse_event_unchanged",
+            "text": "Adverse event unchanged",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "adverse_event_unchanged"
+          }
+        ],
+        "relevance": {
+          "step1:intraoperative_adverse_event_occured": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "mc_procedure_completion_status",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "mc_procedure_completion_status",
+        "openmrs_entity_parent": "",
+        "value": "pending"
+      }
+    ]
+  }
+}

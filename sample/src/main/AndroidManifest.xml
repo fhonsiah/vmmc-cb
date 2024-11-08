@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="org.smartregister.chw.vmmc_sample">
+
+    <application
+        android:name=".application.SampleApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:theme">
+        <activity
+            android:name="org.smartregister.chw.vmmc_sample.activity.EntryActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <receiver
+            android:name="org.smartregister.view.receiver.ConnectivityChangeReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="org.smartregister.view.receiver.TimeChangedBroadcastReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.TIME_SET" />
+            </intent-filter>
+        </receiver>
+
+
+        <activity
+            android:name="org.smartregister.chw.vmmc_sample.activity.SampleJsonFormActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="org.smartregister.chw.vmmc_sample.activity.VmmcMemberProfileActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="org.smartregister.chw.vmmc_sample.activity.VmmcServiceActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="org.smartregister.chw.vmmc_sample.activity.VmmcProcedureActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="org.smartregister.chw.vmmc_sample.activity.VmmcDischargeActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="org.smartregister.chw.vmmc_sample.activity.VmmcNotifiableAdverseActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="org.smartregister.chw.vmmc_sample.activity.VmmcFollowUpActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.vijay.jsonwizard.activities.JsonWizardFormActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+    </application>
+
+</manifest>

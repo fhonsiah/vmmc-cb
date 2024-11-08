@@ -1,0 +1,28 @@
+---
+name: step1_prompt_for_management_of_hypertension
+description: prompt_for_management_of_hypertension
+priority: 1
+condition: "(!step1_first_vital_sign_systolic.equals('') && step1_first_vital_sign_systolic >= 140) || (!step1_first_vital_sign_diastolic.equals('') && step1_first_vital_sign_diastolic >= 90)"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_management_of_hypotension
+description: prompt_for_management_of_hypotension
+priority: 1
+condition: "(!step1_first_vital_sign_systolic.equals('') && step1_first_vital_sign_systolic < 90) || (!step1_first_vital_sign_diastolic.equals('') && step1_first_vital_sign_diastolic < 60)"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_management_of_hypertension_second
+description: prompt_for_management_of_hypertension
+priority: 1
+condition: "(!step1_second_vital_sign_systolic.equals('') && step1_second_vital_sign_systolic >= 140) || (!step1_second_vital_sign_diastolic.equals('') && step1_second_vital_sign_diastolic >= 90)"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_management_of_hypotension_second
+description: prompt_for_management_of_hypotension
+priority: 1
+condition: "(!step1_second_vital_sign_systolic.equals('') && step1_second_vital_sign_systolic < 90) || (!step1_second_vital_sign_diastolic.equals('') && step1_second_vital_sign_diastolic < 60)"
+actions:
+  - "isRelevant = true"

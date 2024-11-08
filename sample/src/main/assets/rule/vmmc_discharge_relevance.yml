@@ -1,0 +1,84 @@
+---
+name: step1_discharge_time
+description: discharge time
+priority: 1
+condition: "step1_discharge_condition.equalsIgnoreCase('satisfactory') || step1_discharge_condition.equalsIgnoreCase('needs_followup')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_analgesics_given
+description: analgesics given
+priority: 1
+condition: "step1_discharge_condition.equalsIgnoreCase('satisfactory') || step1_discharge_condition.equalsIgnoreCase('needs_followup')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_discharging_provider_first_name
+description: discharging provider name relevance
+priority: 1
+condition: "step1_discharge_condition.equalsIgnoreCase('satisfactory') || step1_discharge_condition.equalsIgnoreCase('needs_followup')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_discharging_provider_middle_name
+description: discharging provider middle relevance
+priority: 1
+condition: "!step1_discharging_provider_first_name.equals('')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_discharging_provider_last_name
+description: discharging provider last relevance
+priority: 1
+condition: "!step1_discharging_provider_middle_name.equals('')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_provider_cadre
+description: provider_cadre
+priority: 1
+condition: "step1_discharge_condition.equalsIgnoreCase('satisfactory') || step1_discharge_condition.equalsIgnoreCase('needs_followup')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_notifiable_adverse_event_occured
+description: notifiable_adverse_event_occured
+priority: 1
+condition: "step1_discharge_condition.equalsIgnoreCase('not_discharged')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_condition_note
+description: condition_note
+priority: 1
+condition: "step1_discharge_condition.equalsIgnoreCase('not_discharged') || step1_discharge_condition.equalsIgnoreCase('needs_followup')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_analgenics_dose
+description: analgenics_dose
+priority: 1
+condition: "step1_choose_analgenics_dose_unit.equalsIgnoreCase('gram') || step1_choose_analgenics_dose_unit.equalsIgnoreCase('milligram')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_analgenics_dose_frequency
+description: analgenics_dose_frequency
+priority: 1
+condition: "step1_choose_analgenics_dose_unit.equalsIgnoreCase('gram') || step1_choose_analgenics_dose_unit.equalsIgnoreCase('milligram')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_analgenics_dose_duration
+description: analgenics_dose_duration
+priority: 1
+condition: "step1_choose_analgenics_dose_unit.equalsIgnoreCase('gram') || step1_choose_analgenics_dose_unit.equalsIgnoreCase('milligram')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_next_followup_date
+description: next_followup_date
+priority: 1
+condition: "step1_discharge_condition.equalsIgnoreCase('satisfactory') || step1_discharge_condition.equalsIgnoreCase('needs_followup')"
+actions:
+  - "isRelevant = true"

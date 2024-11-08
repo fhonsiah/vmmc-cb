@@ -1,0 +1,51 @@
+---
+name: step1_did_client_experience_nae_with_device
+description: did_client_experience_nae_with_device relevance
+priority: 1
+condition: "global_method_used.contains('device')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_did_client_experience_nae_without_device
+description: did_client_experience_nae_without_device relevance
+priority: 1
+condition: "!global_method_used.contains('device')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_time_nae_was_attended
+description: time_nae_was_attended relevance
+priority: 1
+condition: "step1_was_nae_attended.equalsIgnoreCase('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_treatment_outcome
+description: treatment_outcome relevance
+priority: 1
+condition: "step1_was_nae_attended.equalsIgnoreCase('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_toast_for_referral
+description: toast_for_referral relevance
+priority: 1
+condition: "step1_treatment_outcome.equalsIgnoreCase('adverse_event_partially_resolved')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_provider_middle_name
+description:  provider middle relevance
+priority: 1
+condition: "!step1_provider_first_name.equals('')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_provider_last_name
+description:  provider last relevance
+priority: 1
+condition: "!step1_provider_middle_name.equals('')"
+actions:
+  - "isRelevant = true"
+
+

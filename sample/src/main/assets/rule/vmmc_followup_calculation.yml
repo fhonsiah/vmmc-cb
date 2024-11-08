@@ -1,0 +1,63 @@
+---
+name: step1_followup_visit_date
+description: vmmc follow-up visit date
+priority: 1
+condition: "true"
+actions:
+  - "calculation = helper.getDateToday()"
+---
+name: step1_visit_number
+description: Visit Number
+priority: 1
+condition: "true"
+actions:
+  - "calculation = step1_follow_up_visit_type.equalsIgnoreCase('routine') ? global_current_visit_number + 1 : global_current_visit_number"
+---
+name: step1_provider_name
+description: provider_name
+priority: 1
+condition: "true"
+actions:
+  - "calculation = step1_provider_first_name +' '+step1_provider_middle_name +' '+ step1_provider_last_name"
+---
+name: step1_type_of_adverse_event
+description: type of adverse event
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_method_used.contains('device') ? step1_type_of_adverse_event_with_device : step1_type_of_adverse_event_without_device"
+---
+name: step1_type_of_adverse_event_others
+description: type_of_adverse_event_others
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_method_used.contains('device') ? step1_type_of_adverse_event_others_with_device : step1_type_of_adverse_event_others_without_device"
+---
+name: step1_desc_of_post_op_adverse_event_infection
+description: desc_of_post_op_adverse_event_infection
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_method_used.contains('device') ? step1_desc_of_post_op_adverse_event_infection_with_device : step1_desc_of_post_op_adverse_event_infection_without_device"
+---
+name: step1_desc_of_post_op_adverse_event_persistent_pain
+description: desc_of_post_op_adverse_event_persistent_pain
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_method_used.contains('device') ? step1_desc_of_post_op_adverse_event_persistent_pain_with_device : step1_desc_of_post_op_adverse_event_persistent_pain_without_device"
+---
+name: step1_desc_of_post_op_adverse_event_swelling
+description: desc_of_post_op_adverse_event_swelling
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_method_used.contains('device') ? step1_desc_of_post_op_adverse_event_swelling_with_device : step1_desc_of_post_op_adverse_event_swelling_without_device"
+---
+name: step1_desc_of_post_op_adverse_pass_urine
+description: desc_of_post_op_adverse_pass_urine
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_method_used.contains('device') ? step1_desc_of_post_op_adverse_pass_urine_with_device : step1_desc_of_post_op_adverse_pass_urine_without_device"

@@ -1,0 +1,14 @@
+---
+name: step1_discharge_date
+description: vmmc discharge date
+priority: 1
+condition: "true"
+actions:
+  - "calculation = helper.getDateToday()"
+---
+name: step1_discharging_provider_name
+description: discharging_provider_name
+priority: 1
+condition: "true"
+actions:
+  - "calculation = step1_discharging_provider_first_name +' '+step1_discharging_provider_middle_name +' '+ step1_discharging_provider_last_name"

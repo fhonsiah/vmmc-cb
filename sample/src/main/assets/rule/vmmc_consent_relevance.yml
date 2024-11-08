@@ -1,0 +1,42 @@
+---
+name: step1_provide_consent_form_signature
+description: toaster provide_consent_from_signature relevance
+priority: 1
+condition: "step1_client_consent_for_mc_procedure.equalsIgnoreCase('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_consent_from_equal_or_above_18
+description: consent_from_equal_or_above_18 question relevance
+priority: 1
+condition: "step1_client_consent_for_mc_procedure.equalsIgnoreCase('yes') && step1_actual_age >= 18"
+actions:
+  - "isRelevant = true"
+---
+name: step1_consent_from_under_18
+description: consent_from_under_18 question relevance
+priority: 1
+condition: "step1_client_consent_for_mc_procedure.equalsIgnoreCase('yes') && step1_actual_age < 18"
+actions:
+  - "isRelevant = true"
+---
+name: step1_health_care_provider_first_name
+description: healthcare provider name relevance
+priority: 1
+condition: "step1_client_consent_for_mc_procedure.equalsIgnoreCase('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_health_care_provider_middle_name
+description: healthcare provider middle relevance
+priority: 1
+condition: "!step1_health_care_provider_first_name.equals('')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_health_care_provider_last_name
+description: healthcare provider last relevance
+priority: 1
+condition: "!step1_health_care_provider_middle_name.equals('')"
+actions:
+  - "isRelevant = true"

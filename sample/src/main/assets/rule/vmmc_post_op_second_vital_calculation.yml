@@ -1,0 +1,7 @@
+---
+name: step1_first_vital_sign_time_taken_previous
+description: first_vital_sign_time_taken_previous
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_first_vital_sign_time_taken_value"

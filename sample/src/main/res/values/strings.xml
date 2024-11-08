@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">opensrp-chw-testing</string>
+    <string name="action_settings">Settings</string>
+    <string name="vmmc_client_profile">New Vmmc Client Profile</string>
+    <string name="vmmc_follow_up_visit">Follow up VMMC Client Profile</string>
+</resources>

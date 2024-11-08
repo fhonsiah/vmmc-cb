@@ -1,0 +1,530 @@
+{
+  "count": "1",
+  "encounter_type": "VMMC Notifiable Adverse Events",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "global": {},
+  "step1": {
+    "title": "Notifiable Adverse Events",
+    "fields": [
+      {
+        "key": "did_client_experience_nae_with_device",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "did_client_experience_nae_with_device",
+        "type": "check_box",
+        "label": "Select notifiable adverse event the client experienced",
+        "combine_checkbox_option_values": "true",
+        "options": [
+          {
+            "key": "complete_or_partial_amputation_of_glans_or_shaft_of_penis",
+            "text": "Complete or partial amputation of the glans or shaft of the penis",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "complete_or_partial_amputation_of_glans_or_shaft_of_penis",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "tetanus_including_non_fatal_cases",
+            "text": "Tetanus including non-fatal cases",
+             "openmrs_entity": "concept",
+            "openmrs_entity_id": "tetanus_including_non_fatal_cases",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "ae_results_in_disbility_permanent",
+            "text": "AE that results in disability that is likely permanent ( e.g glans numbness)",
+             "openmrs_entity": "concept",
+            "openmrs_entity_id": "ae_results_in_disbility_permanent",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "ae_results_in_anatomic_deformity_permanent",
+            "text": "AE that results in anatomic deformity that is likely permanent ( e.g keloid,scaring,penile torsion etc)",
+             "openmrs_entity": "concept",
+            "openmrs_entity_id": "ae_results_in_anatomic_deformity_permanent",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "hospital_admission",
+            "text": "Any hospital admission for >= 3 days",
+             "openmrs_entity": "concept",
+            "openmrs_entity_id": "hospital_admission",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "moderate_severe_device_displacement",
+            "text": "Moderate or severe device displacement AE",
+             "openmrs_entity": "concept",
+            "openmrs_entity_id": "moderate_severe_device_displacement",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "admission_to_icu_within_30_days_post_mc",
+            "text": "Any admission to ICU within 30 days post Male Circumcision",
+             "openmrs_entity": "concept",
+            "openmrs_entity_id": "admission_to_icu_within_30_days_post_mc",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "client_deaths_within_30days_post_mc",
+            "text": "Client deaths within 30days post Male Circumcision",
+             "openmrs_entity": "concept",
+            "openmrs_entity_id": "client_deaths_within_30days_post_mc",
+            "openmrs_entity_parent": ""
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select atleast one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_notifiable_adverse_event_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "did_client_experience_nae_without_device",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "did_client_experience_nae",
+        "type": "check_box",
+        "label": "Select notifiable adverse event the client experienced",
+        "combine_checkbox_option_values": "true",
+        "options": [
+          {
+          "key": "complete_or_partial_amputation_of_glans_or_shaft_of_penis",
+          "text": "Complete or partial amputation of the glans or shaft of the penis",
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "complete_or_partial_amputation_of_glans_or_shaft_of_penis",
+          "openmrs_entity_parent": ""
+          },
+          {
+            "key": "tetanus_including_non_fatal_cases",
+            "text": "Tetanus including non-fatal cases",
+             "openmrs_entity": "concept",
+            "openmrs_entity_id": "tetanus_including_non_fatal_cases",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "ae_results_in_disbility_permanent",
+            "text": "AE that results in disability that is likely permanent ( e.g glans numbness)",
+             "openmrs_entity": "concept",
+            "openmrs_entity_id": "ae_results_in_disbility_permanent",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "ae_results_in_anatomic_deformity_permanent",
+            "text": "AE that results in anatomic deformity that is likely permanent ( e.g keloid,scaring,penile torsion etc)",
+             "openmrs_entity": "concept",
+            "openmrs_entity_id": "ae_results_in_anatomic_deformity_permanent",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "hospital_admission",
+            "text": "Any hospital admission for >= 3 days",
+             "openmrs_entity": "concept",
+            "openmrs_entity_id": "hospital_admission",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "admission_to_icu_within_30_days_post_mc",
+            "text": "Any admission to ICU within 30 days post Male Circumcision",
+             "openmrs_entity": "concept",
+            "openmrs_entity_id": "admission_to_icu_within_30_days_post_mc",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "client_deaths_within_30days_post",
+            "text": "Client deaths within 30days post Male Circumcision",
+             "openmrs_entity": "concept",
+            "openmrs_entity_id": "client_deaths_within_30days_post",
+            "openmrs_entity_parent": ""
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select atleast one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_notifiable_adverse_event_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "did_client_experience_nae",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "did_client_experience_nae",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_notifiable_adverse_event_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "date_nae_occured",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "date_nae_occured",
+        "type": "date_picker",
+        "hint": "Date NAE occured",
+        "expanded": false,
+        "min_date": "today-1y",
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the date"
+        }
+      },
+      {
+        "key": "date_nae_notified",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "date_nae_notified",
+        "type": "date_picker",
+        "hint": "Date NAE was notified",
+        "expanded": false,
+        "min_date": "today-1y",
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the date"
+        }
+      },
+      {
+        "key": "time_nae_started",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "time_nae_started",
+        "type": "time_picker",
+        "hint": "Time NAE started ",
+        "expanded": false,
+        "v_required": {
+          "value": "true",
+          "err": "Please provide the time "
+        }
+      },
+      {
+        "key": "nature_of_nae",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "nature_of_nae",
+        "type": "edit_text",
+        "hint": "What was the nature of NAE",
+        "v_required": {
+          "value": "true",
+          "err": "Please fill the field"
+        }
+      },
+      {
+        "key": "what_done",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "what_done",
+        "type": "edit_text",
+        "hint": "What was done",
+        "v_required": {
+          "value": "true",
+          "err": "Please fill the field"
+        }
+      },
+      {
+        "key": "was_nae_attended",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "was_nae_attended",
+        "label": "Was NAE attended ?",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select at least one"
+        }
+      },
+      {
+        "key": "time_nae_was_attended",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "time_nae_was_attended",
+        "type": "time_picker",
+        "hint": "Time Nae was attended ",
+        "expanded": false,
+        "v_required": {
+          "value": "true",
+          "err": "Please provide the time "
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_notifiable_adverse_event_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "provider_first_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provider_first_name",
+        "type": "edit_text",
+        "hint": "Provider's first name",
+        "v_required": {
+          "value": "true",
+          "err": "Please fill the field"
+        }
+      },
+      {
+        "key": "provider_middle_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provider_middle_name",
+        "type": "edit_text",
+        "hint": "Provider's middle name",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_notifiable_adverse_event_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "provider_last_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provider_last_name",
+        "type": "edit_text",
+        "hint": "Provider's last name",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_notifiable_adverse_event_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "provider_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provider_name",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_notifiable_adverse_event_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "provider_cadre",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provider_cadre",
+        "type": "native_radio",
+        "label": "Provider's cadre",
+        "options": [
+          {
+            "key": "medical_officer",
+            "text": "Medical officer",
+
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "medical_officer",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "assistant_medical_officer",
+            "text": "Assistant medical officer",
+
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "assistant_medical_officer",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "clinical_officer_or_assistant_clinical",
+            "text": "Clinical officer/Assistant clinical officer",
+
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "clinical_officer_or_assistant_clinical",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "enrolled_nurse",
+            "text": "Enrolled nurse",
+
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "enrolled_nurse",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "assistant_nursing_officer",
+            "text": "Assistant nursing officer",
+
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "assistant_nursing_officer",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "nursing_officer",
+            "text": "Nursing officer",
+
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "nursing_officer",
+            "openmrs_entity_parent": ""
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select atleast one"
+        }
+      },
+      {
+        "key": "treatment_outcome",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "treatment_outcome",
+        "label": "Treatment outcome",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "adverse_event_completely_resolved",
+            "text": "Adverse event completely resolved",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "adverse_event_completely_resolved"
+          },
+          {
+            "key": "adverse_event_partially_resolved",
+            "text": "Adverse event partially resolved",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "adverse_event_partially_resolved"
+          },
+          {
+            "key": "adverse_event_unchanged",
+            "text": "Adverse event unchanged",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "adverse_event_unchanged"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select atleast one outcome"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_notifiable_adverse_event_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "treatment_outcome_note",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "person_attribute",
+        "openmrs_entity_id": "toaster_notes",
+        "type": "toaster_notes",
+        "text": "Refer the client for further management",
+        "text_color": "#CF0800",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:treatment_outcome": {
+            "type": "string",
+            "ex": "equalTo(., \"adverse_event_partially_resolved\")"
+          }
+        }
+      },
+      {
+        "key": "treatment_outcome_unchanged_note",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "person_attribute",
+        "openmrs_entity_id": "toaster_notes",
+        "type": "toaster_notes",
+        "text": "Refer the client for further managment",
+        "text_color": "#CF0800",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:treatment_outcome": {
+            "type": "string",
+            "ex": "equalTo(., \"adverse_event_unchanged\")"
+          }
+        }
+      }
+    ]
+  }
+}

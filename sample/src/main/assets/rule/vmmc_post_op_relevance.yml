@@ -1,0 +1,28 @@
+---
+name: step1_device_mc
+description: device_mc relevance
+priority: 1
+condition: "global_method_used.contains('device')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_dressing_condition_in_relation_to_bleeding
+description: dressing_condition_in_relation_to_bleeding relevance
+priority: 1
+condition: "global_method_used.contains('dorsal_slit') || global_method_used.contains('sleeve_resection')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_device_male_circumcision_toaster
+description: device_male_circumcision_toaster relevance
+priority: 1
+condition: "step1_device_mc.contains('the_ring')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_device_male_circumcision_bleeding_toaster
+description: device_male_circumcision_bleeding_toaster relevance
+priority: 1
+condition: "step1_device_mc.contains('bleeding')"
+actions:
+  - "isRelevant = true"

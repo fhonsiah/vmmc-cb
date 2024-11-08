@@ -1,0 +1,230 @@
+{
+  "count": "1",
+  "encounter_type": "Post Operation",
+  "validate_on_submit": true,
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "165000AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "165001AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "165003AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "165004AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "165005AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "165006AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "global": {},
+  "step1": {
+    "title": "Post Operation",
+    "fields": [
+      {
+        "key": "dressing_condition_in_relation_to_bleeding",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "dressing_condition_in_relation_to_bleeding",
+        "type": "native_radio",
+        "label": "Describe the condition of the dressing in relation to bleeding",
+        "label_text_style": "bold",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "dressing_clear",
+            "text": "Dressing clear",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "dressing_clear"
+          },
+          {
+            "key": "blood_spots_on_dressing",
+            "text": "Blood spots on dressing",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "blood_spots_on_dressing"
+          },
+          {
+            "key": "dressing_soaked",
+            "text": "Dressing soaked",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "dressing_soaked"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Dressing condition is required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_post_op_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "dressing_toaster",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "dressing_toaster",
+        "type": "toaster_notes",
+        "text_color": "#000000",
+        "text": "Manage according to SOP",
+        "toaster_type": "info",
+        "toaster_info_text": "- Instruct the client to come 2 days (48 hours) after surgery to remove dressing, if there is no bleeding or oozing, and day 7 for follow up\n- Wear dried, clean, loose-fitting underwear, which should be changed each day\t\n- Shower twice a day after dressing removal, taking care to wash the genital area with soap and water gently\n- Not applying any home remedies to surgical wound e.g. cow dung manure  Client/parent/guardian understands the signs of an emergency;\n-- Increasing bleeding\n-- Severe pain in the penis or genital area\n-- Inability to pass urine or severe pain when passing urine\n-- Pus discharging from the surgical wound,\n-- Increasing swelling\n\nEnsure that the client/parent/guardian:\n\n- Understands that he/she should return to the nearby health facility immediately or seek emergency care if a problem develops\n- Knows where to go if and when complications arise\n- Has been given written postoperative instructions and has been asked to repeat them\n- Ensure that the client/parent/guardian:\n- Has been given medications as ordered\n- Has been given a follow-up appointment\n- Has a responsible adult to accompany him home (this is  for underage clients)\n\nThe provider should ensure that the client:\n\n- Has been confirmed to be discharged by the operating surgeon or his/her designee\n- The record has been completed and maintained at the health facility where the procedure took place\n- The site should retain a copy of the referral note in case the client is transferred to another site\n",
+        "toaster_info_title": "Info",
+        "relevance": {
+          "step1:dressing_condition_in_relation_to_bleeding": {
+            "type": "string",
+            "ex": "equalTo(., \"dressing_soaked\")"
+          }
+        }
+      },
+      {
+        "key": "blood_spot_toaster",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "blood_spot_toaster",
+        "type": "toaster_notes",
+        "text_color": "#000000",
+        "text": "Manage according to SOP",
+        "toaster_type": "info",
+        "toaster_info_text": "- Instruct the client to come 2 days (48 hours) after surgery to remove dressing, if there is no bleeding or oozing, and day 7 for follow up\n- Wear dried, clean, loose-fitting underwear, which should be changed each day\t\n- Shower twice a day after dressing removal, taking care to wash the genital area with soap and water gently\n- Not applying any home remedies to surgical wound e.g. cow dung manure  Client/parent/guardian understands the signs of an emergency;\n-- Increasing bleeding\n-- Severe pain in the penis or genital area\n-- Inability to pass urine or severe pain when passing urine\n-- Pus discharging from the surgical wound,\n-- Increasing swelling\n\nEnsure that the client/parent/guardian:\n\n- Understands that he/she should return to the nearby health facility immediately or seek emergency care if a problem develops\n- Knows where to go if and when complications arise\n- Has been given written postoperative instructions and has been asked to repeat them\n- Ensure that the client/parent/guardian:\n- Has been given medications as ordered\n- Has been given a follow-up appointment\n- Has a responsible adult to accompany him home (this is  for underage clients)\n\nThe provider should ensure that the client:\n\n- Has been confirmed to be discharged by the operating surgeon or his/her designee\n- The record has been completed and maintained at the health facility where the procedure took place\n- The site should retain a copy of the referral note in case the client is transferred to another site\n",
+        "toaster_info_title": "Info",
+        "relevance": {
+          "step1:dressing_condition_in_relation_to_bleeding": {
+            "type": "string",
+            "ex": "equalTo(., \"blood_spots_on_dressing\")"
+          }
+        }
+      },
+      {
+        "key": "dressing_clear_toaster",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "dressing_clear_toaster",
+        "type": "toaster_notes",
+        "text_color": "#000000",
+        "text": "Provide health education",
+        "toaster_type": "info",
+        "toaster_info_text": "- Instruct the client to come 2 days (48 hours) after surgery to remove dressing, if there is no bleeding or oozing, and day 7 for follow up\n- Wear dried, clean, loose-fitting underwear, which should be changed each day\t\n- Shower twice a day after dressing removal, taking care to wash the genital area with soap and water gently\n- Not applying any home remedies to surgical wound e.g. cow dung manure  Client/parent/guardian understands the signs of an emergency;\n-- Increasing bleeding\n-- Severe pain in the penis or genital area\n-- Inability to pass urine or severe pain when passing urine\n-- Pus discharging from the surgical wound,\n-- Increasing swelling\n\nEnsure that the client/parent/guardian:\n\n- Understands that he/she should return to the nearby health facility immediately or seek emergency care if a problem develops\n- Knows where to go if and when complications arise\n- Has been given written postoperative instructions and has been asked to repeat them\n- Ensure that the client/parent/guardian:\n- Has been given medications as ordered\n- Has been given a follow-up appointment\n- Has a responsible adult to accompany him home (this is  for underage clients)\n\nThe provider should ensure that the client:\n\n- Has been confirmed to be discharged by the operating surgeon or his/her designee\n- The record has been completed and maintained at the health facility where the procedure took place\n- The site should retain a copy of the referral note in case the client is transferred to another site\n",
+        "toaster_info_title": "Info",
+        "relevance": {
+          "step1:dressing_condition_in_relation_to_bleeding": {
+            "type": "string",
+            "ex": "equalTo(., \"dressing_clear\")"
+          }
+        }
+      },
+      {
+        "key": "device_mc",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "device_mc",
+        "type": "check_box",
+        "label": "Device Male Circumcision, Observe the following",
+        "label_text_style": "bold",
+        "text_color": "#000000",
+        "combine_checkbox_option_values": "true",
+        "options": [
+          {
+            "key": "the_ring",
+            "text": "The ring in place",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "the_ring"
+          },
+          {
+            "key": "bleeding",
+            "text": "Bleeding",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "bleeding"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Device Male Circumcision is required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_post_op_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "device_male_circumcision_toaster",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "device_male_circumcision_toaster",
+        "type": "toaster_notes",
+        "text_color": "#000000",
+        "text": "Provide health education",
+        "toaster_type": "info",
+        "toaster_info_text": "Do not attempt to remove or try to reposition ShangRingTM \nCome back at day 7 after ShangRingTM placement for assessment and device removal \nBath at least twice a day (If you sweat heavily, be sure to clean and dry your body immediately, to keep the wound from becoming infected, which would delay healing) \nWash the circumcised area with clean water after urination and dry the area afterward \nDrink adequate amount of water to reduce inevitable occasion of erection \nReturn to the facility accompanied by parent/guardian for client below 18 years \n\nEnsure that the client/parent/guardian:\n\n- Understands that he/she should return to the nearby health facility immediately or seek emergency care if a problem develops\n- Knows where to go if and when complications arise\n- Has been given written postoperative instructions and has been asked to repeat them\n- Ensure that the client/parent/guardian:\n- Has been given medications as ordered\n- Has been given a follow-up appointment\n- Has a responsible adult to accompany him home (this is  for underage clients)\n\nThe provider should ensure that the client:\n\n- Has been confirmed to be discharged by the operating surgeon or his/her designee\n- The record has been completed and maintained at the health facility where the procedure took place\n- The site should retain a copy of the referral note in case the client is transferred to another site\n",
+        "toaster_info_title": "Info",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_post_op_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "device_male_circumcision_bleeding_toaster",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "device_male_circumcision_bleeding_toaster",
+        "type": "toaster_notes",
+        "text_color": "#000000",
+        "text": "Manage according to SOP",
+        "toaster_type": "info",
+        "toaster_info_text": "- Do not attempt to remove or try to reposition ShangRingTM \n - Come back at day 7 after ShangRingTM placement for assessment and device removal \n - Bath at least twice a day (If you sweat heavily, be sure to clean and dry your body immediately, to keep the wound from becoming infected, which would delay healing) \n - Wash the circumcised area with clean water after urination and dry the area afterward \n - Drink adequate amount of water to reduce inevitable occasion of erection \n - Return to the facility accompanied by parent/guardian for client below 18 years \n\nEnsure that the client/parent/guardian:\n\n- Understands that he/she should return to the nearby health facility immediately or seek emergency care if a problem develops\n- Knows where to go if and when complications arise\n- Has been given written postoperative instructions and has been asked to repeat them\n- Ensure that the client/parent/guardian:\n- Has been given medications as ordered\n- Has been given a follow-up appointment\n- Has a responsible adult to accompany him home (this is  for underage clients)\n\nThe provider should ensure that the client:\n\n- Has been confirmed to be discharged by the operating surgeon or his/her designee\n- The record has been completed and maintained at the health facility where the procedure took place\n- The site should retain a copy of the referral note in case the client is transferred to another site\n",
+        "toaster_info_title": "Info",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_post_op_relevance.yml"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

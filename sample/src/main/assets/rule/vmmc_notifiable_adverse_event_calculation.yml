@@ -1,0 +1,14 @@
+---
+name: step1_did_client_experience_nae
+description: did_client_experience_nae
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_method_used.contains('device') ? step1_did_client_experience_nae_with_device : step1_did_client_experience_nae_without_device"
+---
+name: step1_provider_name
+description: provider_name
+priority: 1
+condition: "true"
+actions:
+  - "calculation = step1_provider_first_name +' '+step1_provider_middle_name +' '+ step1_provider_last_name"

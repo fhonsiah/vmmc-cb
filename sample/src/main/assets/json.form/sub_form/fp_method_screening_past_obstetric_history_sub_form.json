@@ -1,0 +1,110 @@
+{
+  "content_form": [
+    {
+      "key": "year_of_delivery",
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_entity_id": "year_of_delivery",
+      "type": "edit_text",
+      "edit_type": "number",
+      "hint": "Year of Delivery",
+      "v_regex": {
+        "value": "(19[789]\\d|20[012]\\d)",
+        "err": "Please enter a valid Year"
+      },
+      "v_required": {
+        "value": true,
+        "err": "Please enter the year"
+      }
+    },
+    {
+      "key": "mode_of_delivery",
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_entity_id": "mode_of_delivery",
+      "type": "native_radio",
+      "label": "Mode of delivery",
+      "text_color": "#000000",
+      "options": [
+        {
+          "key": "svd",
+          "text": "SVD",
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "svd"
+        },
+        {
+          "key": "cs",
+          "text": "CS",
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "cs"
+        }
+      ],
+      "v_required": {
+        "value": "true",
+        "err": "Required"
+      }
+    },
+    {
+      "key": "place_of_delivery",
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_entity_id": "place_of_delivery",
+      "type": "native_radio",
+      "label": "Place of delivery",
+      "text_color": "#000000",
+      "options": [
+        {
+          "key": "facility",
+          "text": "Facility",
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "facility"
+        },
+        {
+          "key": "home_delivery",
+          "text": "Home delivery",
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "home_delivery"
+        },
+        {
+          "key": "birth_before_arrival",
+          "text": "Birth before arrival",
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "birth_before_arrival"
+        }
+      ],
+      "v_required": {
+        "value": "true",
+        "err": "Required"
+      }
+    },
+    {
+      "key": "outcome",
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_entity_id": "outcome",
+      "type": "native_radio",
+      "label": "Outcome",
+      "text_color": "#000000",
+      "options": [
+        {
+          "key": "alive",
+          "text": "Alive",
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "alive"
+        },
+        {
+          "key": "death",
+          "text": "Death",
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "death"
+        }
+      ],
+      "v_required": {
+        "value": "true",
+        "err": "Required"
+      }
+    }
+  ],
+  "count": 1,
+  "properties_file_name": "vmmc_method_screening_past_obstetric_history_sub_form"
+}

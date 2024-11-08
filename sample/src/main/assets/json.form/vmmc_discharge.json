@@ -1,0 +1,486 @@
+{
+  "count": "1",
+  "encounter_type": "Discharge",
+  "validate_on_submit": true,
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "165000AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "165001AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "165003AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "165004AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "165005AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "165006AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Discharge Form",
+    "fields": [
+      {
+        "key": "discharge_date",
+        "type": "edit_text",
+        "hidden": "true",
+        "openmrs_entity_id": "discharge_date",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_discharge_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "discharge_condition",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "discharge_condition",
+        "type": "native_radio",
+        "label": "General condition at discharge",
+        "options": [
+          {
+            "key":"satisfactory",
+            "text": "Satisfactory",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "satisfactory"
+          },
+          {
+            "key":"needs_followup",
+            "text": "Needs follow-up",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "needs_followup"
+          },
+          {
+            "key":"not_discharged",
+            "text": "Not Discharged",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_discharged"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select the general condition at discharge"
+        }
+      },
+      {
+        "key": "condition_note",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "condition_note",
+        "type": "edit_text",
+        "hint": "Notes/Comments",
+        "edit_type": "text",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_discharge_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "analgesics_given",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "analgesics_given",
+        "type": "native_radio",
+        "label": "Analgesics Given",
+        "options": [
+          {
+            "key":"yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key":"no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_discharge_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "analgenics_type",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "analgenics_type",
+        "type": "spinner",
+        "hint": "Specify Analgesics Type",
+        "values": [
+          "Paracetamol",
+          "Tramadol",
+          "Diclophenac",
+          "Ibuprofen"
+        ],
+        "keys": [
+          "paracetamol",
+          "tramadol",
+          "diclophenac",
+          "ibuprofen"
+        ],
+        "openmrs_choice_ids": {
+          "paracetamol": "paracetamol",
+          "tramadol": "tramadol",
+          "diclophenac": "diclophenac",
+          "ibuprofen" : "ibuprofen"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please Specify Analgesics Type"
+        },
+        "relevance": {
+          "step1:analgesics_given": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "choose_analgenics_dose_unit",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "choose_analgenics_dose_unit",
+        "type": "native_radio",
+        "label": "Choose Analgesics Dose Unit",
+        "options": [
+          {
+            "key":"gram",
+            "text": "Gram",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "gram"
+          },
+          {
+            "key":"milligram",
+            "text": "Milligram",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "milligram"
+          }
+        ],
+        "relevance": {
+          "step1:analgesics_given": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "analgenics_dose",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "analgenics_dose",
+        "type": "edit_text",
+        "hint": "Analgesics Dose",
+        "edit_type": "text",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_discharge_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "analgenics_dose_frequency",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "analgenics_dose_frequency",
+        "type": "edit_text",
+        "hint": "Analgesics Dose Frequency(hourly)",
+        "edit_type": "text",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_discharge_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "analgenics_dose_duration",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "analgenics_dose_duration",
+        "type": "edit_text",
+        "hint": "Analgesics Dose Duration(days)",
+        "edit_type": "text",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_discharge_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "analgenics_reasons",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "analgenics_reasons",
+        "type": "edit_text",
+        "hint": "Give Reason",
+        "edit_type": "text",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "step1:analgesics_given": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
+        "key": "discharge_time",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "discharge_time",
+        "type": "time_picker",
+        "hint": "Discharge Time",
+        "expandable": false,
+        "duration": {
+          "label": "Discharge Time"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_discharge_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "discharging_provider_first_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "health_care_provider_first_name",
+        "type": "edit_text",
+        "hint": "Discharging provider's first name",
+        "v_required": {
+          "value": "true",
+          "err": "Please write the name"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_discharge_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "discharging_provider_middle_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "health_care_provider_middle_name",
+        "type": "edit_text",
+        "hint": "Discharging provider's middle name",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_discharge_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "discharging_provider_last_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "health_care_provider_last_name",
+        "type": "edit_text",
+        "hint": "Discharging provider's last name",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_discharge_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "discharging_provider_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "discharging_provider_name",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_discharge_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "provider_cadre",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provider_cadre",
+        "type": "native_radio",
+        "label": "Provider's cadre",
+        "options": [
+          {
+            "key": "medical_officer",
+            "text": "Medical officer",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "medical_officer",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "assistant_medical_officer",
+            "text": "Assistant medical officer",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "assistant_medical_officer",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "clinical_officer_or_assistant_clinical officer",
+            "text": "Clinical officer/Assistant clinical officer",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "clinical_officer_or_assistant_clinical",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "enrolled_nurse",
+            "text": "Enrolled nurse",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "enrolled_nurse",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "assistant_nursing_officer",
+            "text": "Assistant nursing officer",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "assistant_nursing_officer",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "nursing_officer",
+            "text": "Nursing officer",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "nursing_officer",
+            "openmrs_entity_parent": ""
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_discharge_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "notifiable_adverse_event_occured",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "intraoperative_adverse_event_occured",
+        "label": "Did Notifiable adverse event occur ?",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_discharge_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "next_followup_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "next_followup_date",
+        "type": "date_picker",
+        "hint": "Next followup date",
+        "expanded": false,
+        "min_date": "today",
+        "max_date": "today+1y",
+        "v_required": {
+          "value": "true",
+          "err": "Please fill next followup date"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_discharge_relevance.yml"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

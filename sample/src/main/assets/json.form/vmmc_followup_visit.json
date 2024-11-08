@@ -1,0 +1,1900 @@
+{
+  "count": "1",
+  "encounter_type": "Vmmc Follow-up Visit",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "global": {},
+  "step1": {
+    "title": "Follow-up Form",
+    "fields": [
+      {
+        "key": "visit_number",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "visit_number",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "followup_visit_date",
+        "type": "edit_text",
+        "hidden": "true",
+        "openmrs_entity_id": "followup_visit_date",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "post_op_dates",
+        "type": "label",
+        "text": "Day(s) Post-OP: 1",
+        "hint_on_text": false,
+        "text_color": "#A9A9A9",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "post_op_dates"
+      },
+      {
+        "key": "follow_up_visit_type",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "follow_up_visit_type",
+        "label": "Follow up visit type",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "routine",
+            "text": "Routine",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "routine"
+          },
+          {
+            "key": "emergence",
+            "text": "Emergence",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "emergence"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select the visit type"
+        }
+      },
+      {
+        "key": "comment_vmmc_followup",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "comment_vmmc_followup",
+        "type": "edit_text",
+        "hint": "Notes"
+      },
+      {
+        "key": "post_op_adverse_event_occur",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "post_op_adverse_event_occur",
+        "label": "Did post-operative adverse event occur ?",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select at least one"
+        }
+      },
+      {
+        "key": "time_adverse_event_occured",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "time_adverse_event_occured",
+        "type": "time_picker",
+        "hint": "Time the adverse event occured ",
+        "expanded": false,
+        "v_required": {
+          "value": "true",
+          "err": "Please provide the time "
+        },
+        "relevance": {
+          "step1:post_op_adverse_event_occur": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "time_adverse_event_was_attended",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "time_adverse_event_was_attended",
+        "type": "time_picker",
+        "hint": "Time the adverse event was attended ",
+        "expanded": false,
+        "v_required": {
+          "value": "true",
+          "err": "Please provide the time "
+        },
+        "relevance": {
+          "step1:post_op_adverse_event_occur": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "type_of_adverse_event_with_device",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "type_of_adverse_event_with_device",
+        "type": "check_box",
+        "combine_checkbox_option_values": "true",
+        "label": "Type of adverse event",
+        "options": [
+          {
+            "key": "bleeding_or_blood_soiling_of_dressing",
+            "text": "Bleeding or blood soiling of dressing",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "bleeding_or_blood_soiling_of_dressing",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "swelling_of_penis_or_scrotum",
+            "text": "Swelling of the penis or scrotum",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "swelling_of_penis_or_scrotum",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "persistent_pain",
+            "text": "Persistent pain",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "persistent_pain",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "infection",
+            "text": "Infection",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "infection",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "failure_pass_urine",
+            "text": "Failure to pass urine",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "failure_pass_urine",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "device_displacement",
+            "text": "Device displacement",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "device_displacement",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "device_detachment",
+            "text": "Device detachment",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "device_detachment",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "excessive_skin_removed",
+            "text": "Excessive skin removed",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "excessive_skin_removed",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "delayed_wound_healing",
+            "text": "Delayed wound healing",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "delayed_wound_healing",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "appearance",
+            "text": "Appearance",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "appearance",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "others",
+            "text": "Others",
+            "ignore": true,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "others",
+            "openmrs_entity_parent": ""
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select atleast one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "type_of_adverse_event_without_device",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "type_of_adverse_event_without_device",
+        "type": "check_box",
+        "combine_checkbox_option_values": "true",
+        "label": "Type of adverse event",
+        "options": [
+          {
+            "key": "bleeding_or_blood_soiling_of_dressing",
+            "text": "Bleeding or blood soiling of dressing",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "bleeding_or_blood_soiling_of_dressing",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "swelling_of_penis_or_scrotum",
+            "text": "Swelling of the penis or scrotum",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "swelling_of_penis_or_scrotum",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "persistent_pain",
+            "text": "Persistent pain",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "persistent_pain",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "infection",
+            "text": "Infection",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "infection",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "failure_pass_urine",
+            "text": "Failure to pass urine",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "failure_pass_urine",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "excessive_skin_removed",
+            "text": "Excessive skin removed",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "excessive_skin_removed",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "delayed_wound_healing",
+            "text": "Delayed wound healing",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "delayed_wound_healing",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "appearance",
+            "text": "Appearance",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "appearance",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "others",
+            "text": "Others",
+            "ignore": true,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "others",
+            "openmrs_entity_parent": ""
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select atleast one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "type_of_adverse_event",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "type_of_adverse_event",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "type_of_adverse_event_others",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "type_of_adverse_event_others",
+        "type": "edit_text",
+        "hint": "Others (Specify)",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "desc_of_post_op_adverse_event_infection",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "desc_of_post_op_adverse_event_infection",
+        "label": "Description of post-operative adverse events(Infection)",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "erythema",
+            "text": "Erythema more than 1 cm beyond incision line",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "erythema"
+          },
+          {
+            "key": "purulent",
+            "text": "Purulent discharge from the wound",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "purulent"
+          },
+          {
+            "key": "cellutilis",
+            "text": "Cellutilis or wound necrosis",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "cellutilis"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select atleast one scale"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_mild_infection",
+        "type": "toaster_notes",
+        "text": "AE classified as MILD",
+        "openmrs_entity_id": "ae_classified_as_mild",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "info",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_moderate_infection",
+        "type": "toaster_notes",
+        "text": "AE classified as MODERATE",
+        "openmrs_entity_id": "ae_classified_as_moderate",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_severe_infection",
+        "type": "toaster_notes",
+        "text": "AE classified as SEVERE",
+        "openmrs_entity_id": "ae_classified_as_severe",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "desc_of_post_op_adverse_event_persistent_pain",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "desc_of_post_op_adverse_event_persistent_pain",
+        "label": "Description of post-operative adverse events(Persistent pain)",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "3_or_4_on_pain_scale",
+            "text": "3 or 4 on pain scale",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "3_or_4_on_pain_scale"
+          },
+          {
+            "key": "5_or_6_on_pain_scale",
+            "text": "5 or 6 on pain scale",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "5_or_6_on_pain_scale"
+          },
+
+          {
+            "key": "7_on_pain_scale",
+            "text": "7 on pain scale",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "7_on_pain_scale"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select atleast one scale"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_mild_pain",
+        "type": "toaster_notes",
+        "text": "AE classified as MILD",
+        "openmrs_entity_id": "ae_classified_as_mild",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "info",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_moderate_pain",
+        "type": "toaster_notes",
+        "text": "AE classified as MODERATE",
+        "openmrs_entity_id": "ae_classified_as_moderate",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_severe_pain",
+        "type": "toaster_notes",
+        "text": "AE classified as SEVERE",
+        "openmrs_entity_id": "ae_classified_as_severe",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "desc_of_post_op_adverse_event_bleeding",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "desc_of_post_op_adverse_event_bleeding",
+        "label": "Description of post-operative adverse events(Bleeding)",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "more_bleeding",
+            "text": "More bleeding than usual, but easily controlled",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "more_bleeding"
+          },
+          {
+            "key": "pressure_dressing",
+            "text": "Bleeding that requires pressure dressing to control",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "pressure_dressing"
+          },
+
+          {
+            "key": "blood_transfusion",
+            "text": "Blood transfusion or transfer to another facility required",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "blood_transfusion"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select atleast one scale"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_mild_bleeding",
+        "type": "toaster_notes",
+        "text": "AE classified as MILD",
+        "openmrs_entity_id": "ae_classified_as_mild",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "info",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_moderate_bleeding",
+        "type": "toaster_notes",
+        "text": "AE classified as MODERATE",
+        "openmrs_entity_id": "ae_classified_as_moderate",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_severe_bleeding",
+        "type": "toaster_notes",
+        "text": "AE classified as SEVERE",
+        "openmrs_entity_id": "ae_classified_as_severe",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_relevance.yml"
+            }
+          }
+        }
+      },
+
+      {
+        "key": "desc_of_post_op_adverse_event_device_detachment",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "desc_of_post_op_adverse_event_device_detachment",
+        "label": "Description of post-operative adverse events(device detachment)",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "post_removal",
+            "text": "Detachment of the device after which no other treatment needed beyond routine post-removal wound care. ",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "post_removal"
+          },
+          {
+            "key": "meet_severe_criteria",
+            "text": "Detachment of the device that requires any treatment more than routine post-operative wound care but does not meet severe criteria. ",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "meet_severe_criteria"
+          },
+
+          {
+            "key": "surgical_intervention",
+            "text": "Detachment of the device, including intentional movement of device by the client and/or self-removal, that requires surgical intervention, hospitalization, or transfer to another facility to clinically manage.",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "surgical_intervention"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select atleast one scale"
+        },
+        "relevance": {
+          "step1:type_of_adverse_event_with_device": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "device_detachment"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_mild_device_detachment",
+        "type": "toaster_notes",
+        "text": "AE classified as MILD",
+        "openmrs_entity_id": "ae_classified_as_mild",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "info",
+        "relevance": {
+          "step1:desc_of_post_op_adverse_event_device_detachment": {
+            "type": "string",
+            "ex": "equalTo(., \"post_removal\")"
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_moderate_device_detachment",
+        "type": "toaster_notes",
+        "text": "AE classified as MODERATE",
+        "openmrs_entity_id": "ae_classified_as_moderate",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:desc_of_post_op_adverse_event_device_detachment": {
+            "type": "string",
+            "ex": "equalTo(., \"meet_severe_criteria\")"
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_severe_device_detachment",
+        "type": "toaster_notes",
+        "text": "AE classified as SEVERE",
+        "openmrs_entity_id": "ae_classified_as_severe",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:desc_of_post_op_adverse_event_device_detachment": {
+            "type": "string",
+            "ex": "equalTo(., \"surgical_intervention\")"
+          }
+        }
+      },
+
+      {
+        "key": "desc_of_post_op_adverse_event_device_displacement",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "desc_of_post_op_adverse_event_device_displacement",
+        "label": "Description of post-operative adverse events(device displacement)",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "post_removal",
+            "text": "Displacement of the device after which no other treatment needed beyond routine post-removal wound care. ",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "post_removal"
+          },
+          {
+            "key": "meet_severe_criteria",
+            "text": "Displacement of the device that requires any treatment more than routine post-operative wound care but does not meet severe criteria. ",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "meet_severe_criteria"
+          },
+
+          {
+            "key": "surgical_intervention",
+            "text": "Displacement of the device, including intentional movement of device by the client and/or self-removal, that requires surgical intervention, hospitalization, or transfer to another facility to clinically manage.",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "surgical_intervention"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select atleast one scale"
+        },
+        "relevance": {
+          "step1:type_of_adverse_event_with_device": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "device_displacement"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_mild_device_displacement",
+        "type": "toaster_notes",
+        "text": "AE classified as MILD",
+        "openmrs_entity_id": "ae_classified_as_mild",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "info",
+        "relevance": {
+          "step1:desc_of_post_op_adverse_event_device_displacement": {
+            "type": "string",
+            "ex": "equalTo(., \"post_removal\")"
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_moderate_device_displacement",
+        "type": "toaster_notes",
+        "text": "AE classified as MODERATE",
+        "openmrs_entity_id": "ae_classified_as_moderate",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:desc_of_post_op_adverse_event_device_displacement": {
+            "type": "string",
+            "ex": "equalTo(., \"meet_severe_criteria\")"
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_severe_device_displacement",
+        "type": "toaster_notes",
+        "text": "AE classified as SEVERE",
+        "openmrs_entity_id": "ae_classified_as_severe",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:desc_of_post_op_adverse_event_device_displacement": {
+            "type": "string",
+            "ex": "equalTo(., \"surgical_intervention\")"
+          }
+        }
+      },
+      {
+        "key": "desc_of_post_op_adverse_event_swelling",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "desc_of_post_op_adverse_event_swelling",
+        "label": "Description of post-operative adverse events(swelling)",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "bruising",
+            "text": "Mild bruising or abrasion, not requiring treatment",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "bruising"
+          },
+          {
+            "key": "pressure_dressing",
+            "text": "Bruising or abrasion of the glans or shaft of the penis requiring pressure dressing or additional surgery to control",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "pressure_dressing"
+          },
+
+          {
+            "key": "penis_severed",
+            "text": "Part or all of the glans or shaft of the penis severed",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "penis_severed"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select atleast one scale"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_mild_swelling",
+        "type": "toaster_notes",
+        "text": "AE classified as MILD",
+        "openmrs_entity_id": "ae_classified_as_mild",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "info",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_moderate_swelling",
+        "type": "toaster_notes",
+        "text": "AE classified as MODERATE",
+        "openmrs_entity_id": "ae_classified_as_moderate",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_severe_swelling",
+        "type": "toaster_notes",
+        "text": "AE classified as SEVERE",
+        "openmrs_entity_id": "ae_classified_as_severe",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_relevance.yml"
+            }
+          }
+        }
+      },
+
+      {
+        "key": "desc_of_post_op_adverse_pass_urine",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "desc_of_post_op_adverse_pass_urine",
+        "label": "Description of post-operative adverse events(Failure to pass urine)",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "transient_complaint",
+            "text": "Transient complaint that resolves without treatment",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "transient_complaint"
+          },
+          {
+            "key": "return_cinic",
+            "text": "Requires a special return to the cinic, but no additional treatment required",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "return_cinic"
+          },
+
+          {
+            "key": "requires_referral",
+            "text": "Requires referral to another facility for management",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "requires_referral"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select atleast one scale"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_mild_pass_urine",
+        "type": "toaster_notes",
+        "text": "AE classified as MILD",
+        "openmrs_entity_id": "ae_classified_as_mild",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "info",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_moderate_pass_urine",
+        "type": "toaster_notes",
+        "text": "AE classified as MODERATE",
+        "openmrs_entity_id": "ae_classified_as_moderate",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_severe_pass_urine",
+        "type": "toaster_notes",
+        "text": "AE classified as SEVERE",
+        "openmrs_entity_id": "ae_classified_as_severe",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "desc_of_post_op_adverse_excessive_skin_removed",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "desc_of_post_op_adverse_excessive_skin_removed",
+        "label": "Description of post-operative adverse events(Excessive skin removed)",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "adds_time",
+            "text": "Adds time or material needs to the procedure, but does not result in any discernible adverse condition",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "adds_time"
+          },
+          {
+            "key": "additional_operative",
+            "text": "Skin is tight, but additional operative work not necessary",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "additional_operative"
+          },
+          {
+            "key": "operation_or_transfer_to_another_facility",
+            "text": "Requires re-operation or transfer to another facility to correct the problem",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "operation_or_transfer_to_another_facility"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select atleast one scale"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_mild_excessive_skin_removed",
+        "type": "toaster_notes",
+        "text": "AE classified as MILD",
+        "openmrs_entity_id": "ae_classified_as_mild_excessive_skin_removed",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "info",
+        "relevance": {
+          "step1:desc_of_post_op_adverse_excessive_skin_removed": {
+            "type": "string",
+            "ex": "equalTo(., \"adds_time\")"
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_moderate_excessive_skin_removed",
+        "type": "toaster_notes",
+        "text": "AE classified as MODERATE",
+        "openmrs_entity_id": "ae_classified_as_moderate_excessive_skin_removed",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:desc_of_post_op_adverse_excessive_skin_removed": {
+            "type": "string",
+            "ex": "equalTo(., \"additional_operative\")"
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_severe_excessive_skin_removed",
+        "type": "toaster_notes",
+        "text": "AE classified as SEVERE",
+        "openmrs_entity_id": "ae_classified_as_severe_excessive_skin_removed",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:desc_of_post_op_adverse_excessive_skin_removed": {
+            "type": "string",
+            "ex": "equalTo(., \"operation_or_transfer_to_another_facility\")"
+          }
+        }
+      },
+
+      {
+        "key": "desc_of_post_op_adverse_delayed_wound_healing",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "desc_of_post_op_adverse_delayed_wound_healing",
+        "label": "Description of post-operative adverse events(Delayed wound healing)",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "healing_takes_longer_than_usual",
+            "text": "Healing takes longer than usual, but no extra treatment necessary",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "healing_takes_longer_than_usual"
+          },
+          {
+            "key": "additional_non_operative_treatment",
+            "text": "Additional non-operative treatment required",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "additional_non_operative_treatment"
+          },
+          {
+            "key": "requires_re_operation",
+            "text": "Requires re-operation",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "requires_re_operation"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select atleast one scale"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_mild_delayed_wound_healing",
+        "type": "toaster_notes",
+        "text": "AE classified as MILD",
+        "openmrs_entity_id": "ae_classified_as_mild_excessive_anaesthetic_related_event",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "info",
+        "relevance": {
+          "step1:desc_of_post_op_adverse_delayed_wound_healing": {
+            "type": "string",
+            "ex": "equalTo(., \"healing_takes_longer_than_usual\")"
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_moderate_delayed_wound_healing",
+        "type": "toaster_notes",
+        "text": "AE classified as MODERATE",
+        "openmrs_entity_id": "ae_classified_as_moderate_excessive_anaesthetic_related_event",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:desc_of_post_op_adverse_delayed_wound_healing": {
+            "type": "string",
+            "ex": "equalTo(., \"additional_non_operative_treatment\")"
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_severe_delayed_wound_healing",
+        "type": "toaster_notes",
+        "text": "AE classified as SEVERE",
+        "openmrs_entity_id": "ae_classified_as_severe_excessive_anaesthetic_related_event",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:desc_of_post_op_adverse_delayed_wound_healing": {
+            "type": "string",
+            "ex": "equalTo(., \"requires_re_operation\")"
+          }
+        }
+      },
+
+      {
+        "key": "desc_of_post_op_adverse_appearance",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "desc_of_post_op_adverse_appearance",
+        "label": "Description of post-operative adverse events(Appearance)",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "client_concerned_but_no_discernible_abnormality",
+            "text": "Client concerned, but no discernible abnormality",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "client_concerned_but_no_discernible_abnormality"
+          },
+          {
+            "key": "significant_wound_disruption_or_scarring_but_does_not_require_re_operation",
+            "text": "Significant wound disruption or scarring, but does not require re-operation",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "significant_wound_disruption_or_scarring_but_does_not_require_re_operation"
+          },
+          {
+            "key": "requires_re_operation",
+            "text": "Requires re-operation",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "requires_re_operation"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select atleast one scale"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_mild_appearance",
+        "type": "toaster_notes",
+        "text": "AE classified as MILD",
+        "openmrs_entity_id": "ae_classified_as_mild_excessive_anaesthetic_related_event",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "info",
+        "relevance": {
+          "step1:desc_of_post_op_adverse_appearance": {
+            "type": "string",
+            "ex": "equalTo(., \"client_concerned_but_no_discernible_abnormality\")"
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_moderate_appearance",
+        "type": "toaster_notes",
+        "text": "AE classified as MODERATE",
+        "openmrs_entity_id": "ae_classified_as_moderate_excessive_anaesthetic_related_event",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:desc_of_post_op_adverse_appearance": {
+            "type": "string",
+            "ex": "equalTo(., \"significant_wound_disruption_or_scarring_but_does_not_require_re_operation\")"
+          }
+        }
+      },
+      {
+        "key": "ae_classified_as_severe_appearance",
+        "type": "toaster_notes",
+        "text": "AE classified as SEVERE",
+        "openmrs_entity_id": "ae_classified_as_severe_excessive_anaesthetic_related_event",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:desc_of_post_op_adverse_appearance": {
+            "type": "string",
+            "ex": "equalTo(., \"requires_re_operation\")"
+          }
+        }
+      },
+      {
+        "key": "nature_of_ae",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "nature_of_ae",
+        "type": "edit_text",
+        "hint": "What was the nature of AE",
+        "v_required": {
+          "value": "true",
+          "err": "Please fill the field"
+        },
+        "relevance": {
+          "step1:post_op_adverse_event_occur": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "what_done",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "what_done",
+        "type": "edit_text",
+        "hint": "What was done",
+        "v_required": {
+          "value": "true",
+          "err": "Please fill the field"
+        },
+        "relevance": {
+          "step1:post_op_adverse_event_occur": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "was_condom_provided",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "was_condom_provided",
+        "label": "Was condom provided ?",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          },
+          {
+            "key": "na",
+            "text": "N/A",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "na"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select at least one"
+        },
+        "relevance": {
+          "step1:follow_up_visit_type": {
+            "type": "string",
+            "ex": "equalTo(., \"routine\")"
+          }
+        }
+      },
+      {
+        "key": "reason_condom_not_provided",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_condom_not_provided",
+        "type": "spinner",
+        "hint": "Reason as to why Condom was not given",
+        "values": [
+          "Out of stock",
+          "Other (Specify)"
+        ],
+        "keys": [
+          "out_of_stock",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "out_of_stock": "out_of_stock",
+          "other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
+        "relevance": {
+          "step1:was_condom_provided": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_not_providing_condom",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_for_not_providing_condom",
+        "type": "edit_text",
+        "hint": "Specify other reasons for not providing Condom",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "step1:reason_condom_not_provided": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
+      },
+      {
+        "key": "condoms_issued",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "condoms_issued",
+        "type": "check_box",
+        "combine_checkbox_option_values": "true",
+        "label": "Select the type of the condoms issued",
+        "options": [
+          {
+            "key": "male_condoms",
+            "text": "Male condoms",
+ 
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "male_condoms",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "female_condoms",
+            "text": "Female condoms",
+ 
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "female_condoms",
+            "openmrs_entity_parent": ""
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select atleast one"
+        },
+        "relevance": {
+          "step1:was_condom_provided": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+
+      {
+        "key": "number_of_male_condoms_issued",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "number_of_male_condoms_issued",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Number of male condoms issued (Pieces)",
+        "v_required": {
+          "value": "true",
+          "err": "Please fill the field"
+        },
+        "relevance": {
+          "step1:condoms_issued": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "male_condoms"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "number_of_female_condoms_issued",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "number_of_female_condoms_issued",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Number of female condoms issued (Pieces)",
+        "v_required": {
+          "value": "true",
+          "err": "Please fill the field"
+        },
+        "relevance": {
+          "step1:condoms_issued": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "female_condoms"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "was_bandage_given",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "was_bandage_given",
+        "label": "Was bandage given ?",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select at least one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "reason_bandage_not_provided",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_bandage_not_provided",
+        "type": "spinner",
+        "hint": "Reason as to why bandage was not given",
+        "values": [
+          "Out of stock",
+          "Other (Specify)"
+        ],
+        "keys": [
+          "out_of_stock",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "out_of_stock": "out_of_stock",
+          "other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
+        "relevance": {
+          "step1:was_bandage_given": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_not_providing_bandage",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_for_not_providing_bandage",
+        "type": "edit_text",
+        "hint": "Specify other reasons for not providing bandage",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "step1:reason_bandage_not_provided": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
+      },
+      {
+        "key": "number_of_bandage_given",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "number_of_bandage_given",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Number of bandage given",
+        "v_required": {
+          "value": "true",
+          "err": "Please fill the field"
+        },
+        "relevance": {
+          "step1:was_bandage_given": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "provider_first_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provider_first_name",
+        "type": "edit_text",
+        "hint": "Provider's first name",
+        "v_required": {
+          "value": "true",
+          "err": "Please fill the field"
+        }
+      },
+      {
+        "key": "provider_middle_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provider_middle_name",
+        "type": "edit_text",
+        "hint": "Provider's middle name",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "provider_last_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provider_last_name",
+        "type": "edit_text",
+        "hint": "Provider's last name",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "provider_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provider_name",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "provider_cadre",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provider_cadre",
+        "type": "native_radio",
+        "label": "Provider's cadre",
+        "options": [
+          {
+            "key": "medical_officer",
+            "text": "Medical officer",
+ 
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "medical_officer",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "assistant_medical_officer",
+            "text": "Assistant medical officer",
+ 
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "assistant_medical_officer",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "clinical_officer_or_assistant_clinical",
+            "text": "Clinical officer/Assistant clinical officer",
+ 
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "clinical_officer_or_assistant_clinical",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "enrolled_nurse",
+            "text": "Enrolled nurse",
+ 
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "enrolled_nurse",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "assistant_nursing_officer",
+            "text": "Assistant nursing officer",
+ 
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "assistant_nursing_officer",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "nursing_officer",
+            "text": "Nursing officer",
+ 
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "nursing_officer",
+            "openmrs_entity_parent": ""
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select atleast one"
+        }
+      },
+      {
+        "key": "treatment_outcome",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "treatment_outcome",
+        "label": "Treatment outcome",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "adverse_event_completely_resolved",
+            "text": "Adverse event completely resolved",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "adverse_event_completely_resolved"
+          },
+          {
+            "key": "adverse_event_partially_resolved",
+            "text": "Adverse event partially resolved",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "adverse_event_partially_resolved"
+          },
+          {
+            "key": "adverse_event_unchanged",
+            "text": "Adverse event unchanged",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "adverse_event_unchanged"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select atleast one outcome"
+        },
+        "relevance": {
+          "step1:post_op_adverse_event_occur": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "treatment_outcome_note",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "toaster_notes",
+        "type": "toaster_notes",
+        "text": "Refer the client for further managment",
+        "text_color": "#CF0800",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:treatment_outcome": {
+            "type": "string",
+            "ex": "equalTo(., \"adverse_event_partially_resolved\")"
+          }
+        }
+      },
+      {
+        "key": "treatment_outcome_unchanged_note",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "toaster_notes",
+        "type": "toaster_notes",
+        "text": "Refer the client for further managment",
+        "text_color": "#CF0800",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:treatment_outcome": {
+            "type": "string",
+            "ex": "equalTo(., \"adverse_event_unchanged\")"
+          }
+        }
+      },
+      {
+        "key": "notifiable_adverse_event_occured",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "intraoperative_adverse_event_occured",
+        "label": "Did Notifiable adverse event occur ?",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select at least one"
+        },
+        "relevance": {
+          "step1:post_op_adverse_event_occur": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "next_followup_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "next_followup_date",
+        "type": "date_picker",
+        "hint": "Next followup date",
+        "expanded": false,
+        "min_date": "today",
+        "max_date": "today+1y",
+        "v_required": {
+          "value": "true",
+          "err": "Please fill next followup date"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_followup_relevance.yml"
+            }
+          }
+        }
+      }
+    ]
+  }
+}
